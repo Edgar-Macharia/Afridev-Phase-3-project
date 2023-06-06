@@ -11,14 +11,6 @@ class UsersController < ApplicationController
         country=params[:country]
         password=params[:password]
 
-        # user = User.create(username: username, email: email, country: country, password: password)
-        # if user
-        #     message = {:success=> "User created successfully"}
-        #     message.to_json
-        # else
-        #     message = {:error=> "User already exists"}
-        #     message.to_json
-        # end
 
         if(username.present? &&  email.present? && country.present? && password.present?)
                
@@ -57,12 +49,11 @@ class UsersController < ApplicationController
         user = User.find_by(id: session[:user_id])
         
         if user
-           {:user => user}.to_json
+          { user: user }.to_json
         else
-             message = {:error=> "Not logged in"}
-             message.to_json
+          { error: "Not logged in" }.to_json
         end
-       
-     end
+      end
+      
 
 end

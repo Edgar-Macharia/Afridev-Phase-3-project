@@ -1,9 +1,11 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-  set :session =>true
+  set :session => true
 
   use Rack::Session::Cookie,
-  expire_after: 3600
+  ekey: 'myapp_session',
+  expire_after: 3600, # 1 hour in seconds
+  secret: 'myapp_secret_key'
 
 
   # Authorize
