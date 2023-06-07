@@ -2,7 +2,7 @@ import React from "react";
 
 function About() {
   return (
-    <div className="my-5 bg-success bg-opacity-50">
+    <div className="my-5 bg-success bg-opacity-50 me-3">
       <div className="container text-center mb-4">
         <div className="row">
           <div className="col-md-8 d-flex align-items-center">
@@ -21,6 +21,7 @@ function About() {
           </div>
         </div>
       </div>
+      <hr/>
 
       <div className="container text-center mb-4 pt-5">
         <div className="row">
@@ -32,27 +33,28 @@ function About() {
             />
           </div>
           <div className="col-md-8 d-flex align-items-center">
-          Schedule an interview with the talent and hire them.
+            Schedule an interview with the talent and hire them.
             <br />
             Sign a contract that details the project scope and get started.
           </div>
         </div>
       </div>
+      <hr/>
 
-      <div className="container text-center pt-5">
+      <div className="container text-center mb-3 pt-5">
         <div className="row">
-          <div className="col-6 col-md-4 d-flex align-items-center">
+          <div className="col-md-4 d-flex align-items-center mb-3 mb-md-0">
             Our talents are remote-ready, fluent in collaborative tools, and
             available for your entire project.
           </div>
-          <div className="col-6 col-md-4 mb-5">
+          <div className="col-md-4 mb-3 mb-md-4">
             <img
               className="img-fluid bg-light"
               src="https://i0.wp.com/geeky.com.ng/wp-content/uploads/2023/02/money-g0e4aa43d8_1280.png?fit=1280%2C915&ssl=1"
               alt="developer"
             />
           </div>
-          <div className="col-6 col-md-4 d-flex align-items-center">
+          <div className="col-md-4 d-flex align-items-center">
             Our multilingual and multinational professional staff will also be
             available at any time to support you.
           </div>

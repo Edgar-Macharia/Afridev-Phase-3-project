@@ -8,8 +8,11 @@ import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import Jobs from './pages/Jobs';
+import AddJob from './pages/ AddJob';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './context/AuthContext';
+import { JobProvider } from './context/JobContext';
+
 
 
 
@@ -18,10 +21,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <AuthProvider>
+        <JobProvider>
       <Routes>
         <Route path= '/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path= 'jobs' element={<Jobs />} />
+          <Route path= 'jobs/addjob' element={<AddJob />} />
           <Route path= 'about' element={<About />} />
           <Route path= 'search' element={<Search />} />
           <Route path= 'signup' element={<SignUp />} />
@@ -30,6 +35,7 @@ function App() {
           <Route path= 'profile' element={<Profile />} />
         </Route>
       </Routes>
+      </JobProvider>
       </AuthProvider>
       </BrowserRouter>
     </div>
