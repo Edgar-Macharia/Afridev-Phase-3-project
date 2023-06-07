@@ -45,29 +45,31 @@ class JobController < ApplicationController
   end
 
   # UPDATE JOB
-  patch "/jobs/editjob/:id" do
-    authorize
+patch "/jobs/editjob/:id" do
+  authorize
 
-    title = params[:title]
-    company_name = params[:company_name]
+  title = params[:title]
+  company_name = params[:company_name]
 
-    if title.present? && company_name.present?
-      job = Job.find_by(id: params[:id])
-      if job
-        job.update(title: title, company_name: company_name)
-        message = { success: "Job updated successfully" }
-        message.to_json
+  if title.present? && company_name.present?
+    job = Job.find_by(id: params[:id])
+    if job
+      if job.update(title: title, company_name: company_name)
+        { success: "Job updated successfully" }.to_json
       else
         status 406
-        message = { error: "Error updating the job" }
-        message.to_json
+        { error: "Error updating the job" }.to_json
       end
     else
-      status 406
-      message = { error: "All fields are required" }
-      message.to_json
+      status 404
+      { error: "Job not found" }.to_json
     end
+  else
+    status 400
+    { error: "All fields are required" }.to_json
   end
+end
+
 
   # UPDATE ARCHIVE JOB
   patch "/jobs/archive/:id" do
@@ -96,16 +98,18 @@ class JobController < ApplicationController
   # DELETE JOB
   delete "/jobs/delete/:id" do
     authorize
-
+  
     if Job.exists?(id: params[:id])
       job = Job.find(params[:id])
-      job.destroy
-      message = { success: "Job deleted successfully" }
-      message.to_json
+      if job.destroy
+        { success: "Job deleted successfully" }.to_json
+      else
+        status 500
+        { error: "Error deleting the job" }.to_json
+      end
     else
-      status 406
-      message = { error: "The job does not exist" }
-      message.to_json
+      status 404
+      { error: "Job not found" }.to_json
     end
   end
 end
