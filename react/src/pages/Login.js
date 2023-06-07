@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  const {login} = useContext(AuthContext)
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Perform authentication logic here
+    login(username, email, password)
+  
 
     // Reset form fields
     setUsername("");

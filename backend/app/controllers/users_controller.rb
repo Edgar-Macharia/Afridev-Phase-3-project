@@ -44,17 +44,20 @@ class UsersController < ApplicationController
          end
     end
 
-    #current user
+    #CURRENT USER
     get "/current_user" do
-        user = User.find_by(id: session[:user_id])
-        
-        if user
-          { user: user }.to_json
+        if session[:user_id]
+          user = User.find_by(id: session[:user_id])
+          if user
+            { user: user }.to_json
+          else
+            { error: "User not found" }.to_json
+          end
         else
           { error: "Not logged in" }.to_json
         end
-      end
-
+    end
+      
       # UPDATE USER
     patch "/users/edituser/:id" do
 

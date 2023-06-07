@@ -12,11 +12,11 @@ export function AuthProvider({children})
     const [current_user, set_currentUser] =useState()
 
     // Login
-    const login = (username, password) =>{
+    const login = (username, email, password) =>{
         fetch("/auth/login", {
             method: "POST",
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({username, email, password})
         })
         .then((res)=>res.json())
         .then((response)=>{

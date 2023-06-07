@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import Jobs from './pages/Jobs';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthProvider } from './context/AuthContext';
 
 
 
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <AuthProvider>
       <Routes>
         <Route path= '/' element={<Layout />}>
           <Route index element={<Home />} />
@@ -28,6 +30,7 @@ function App() {
           <Route path= 'profile' element={<Profile />} />
         </Route>
       </Routes>
+      </AuthProvider>
       </BrowserRouter>
     </div>
   );
