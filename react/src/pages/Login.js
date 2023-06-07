@@ -1,40 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Perform authentication logic here
+
+    // Reset form fields
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <div className="container mt-5 pt-5">
       <div className="row justify-content-center">
         <div className="col-lg-4">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h1 className="h3 mb-3 fw-normal">Please Log in</h1>
 
             <div className="form-floating">
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="username"
                 placeholder="name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
-              <label htmlFor="floatingInput">Username</label>
+              <label htmlFor="username">Username</label>
             </div>
 
             <div className="form-floating">
               <input
                 type="email"
                 className="form-control"
-                id="floatingInput"
+                id="email"
                 placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="floatingInput">Email address</label>
+              <label htmlFor="email">Email address</label>
             </div>
             <div className="form-floating">
               <input
                 type="password"
                 className="form-control"
-                id="floatingPassword"
+                id="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <label htmlFor="floatingPassword">Password</label>
+              <label htmlFor="password">Password</label>
             </div>
 
             <div className="checkbox mb-3">

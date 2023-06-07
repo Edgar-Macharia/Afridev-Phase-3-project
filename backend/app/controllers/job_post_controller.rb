@@ -55,8 +55,8 @@ class JobController < ApplicationController
     
     
      if(title.present? &&  company_name.present? )
-         job_find = job.find_by(id: params[:id])
-         job = job_find.update(title: title, company_name: company_name)
+         job_find = Job.find_by(id: params[:id])
+         job = Job_find.update(title: title, company_name: company_name)
          if job
              message = {:success=> "job updated successfully"}
              message.to_json
@@ -83,8 +83,8 @@ class JobController < ApplicationController
    
     
      if(archive.present? )
-         job_find = job.find_by(id: params[:id])
-         job = job_find.update(archive: archive)
+         job_find = Job.find_by(id: params[:id])
+         job = Job_find.update(archive: archive)
          if job
              message = {:success=> "job archived"}
              message.to_json
@@ -105,10 +105,10 @@ class JobController < ApplicationController
  delete "/jobs/delete/:id" do
      authorize 
      
-     check_job = job.exists?(id: params[:id] ) 
+     check_job = Job.exists?(id: params[:id] ) 
      if check_job
-         job = job.find(params[:id])
-         job.destroy
+         job = Job.find(params[:id])
+         Job.destroy
          message = {:success=> "job deleted successfully"}
          message.to_json
      else

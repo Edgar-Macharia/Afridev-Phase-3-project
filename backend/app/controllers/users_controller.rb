@@ -54,6 +54,53 @@ class UsersController < ApplicationController
           { error: "Not logged in" }.to_json
         end
       end
+
+      # UPDATE USER
+    patch "/users/edituser/:id" do
+
+        authorize
+
+        username=params[:username]
+        email=params[:email]
+        country=params[:country]
+        password=params[:password]
+   
+   
+    if(username.present? &&  email.present? )
+        user_find = User.find_by(id: params[:id])
+        user = User_find.update(username: username, email: email)
+        if user
+            message = {:success=> "user updated successfully"}
+            message.to_json
+        else
+            status 406
+            message = {:error=> "Error updating the user"}
+            message.to_json
+        end
+
+    else
+        status 406
+        message = {:error=> "All fields are required"}
+        message.to_json
+    end
+
+    # DELETE USER
+    delete "/users/delete/:id" do
+        authorize 
+        
+        check_post = User.exists?(id: params[:id] ) 
+        if check_post
+            user = User.find(params[:id])
+            user.destroy
+            message = {:success=> "user deleted successfully"}
+            message.to_json
+        else
+            status 406
+            message = {:error=> "The user does not exist"}
+            message.to_json
+        end
+    end
+end
       
 
 end
