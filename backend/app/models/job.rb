@@ -9,23 +9,23 @@ class Job < ActiveRecord::Base
   
 
 
-  def delete
-    self.destroy
-    # delete the job record from db
-  end
+  # def delete
+  #   self.destroy
+  #   # delete the job record from db
+  # end
 
-  def self.job_list
-    all
-    # retrieve all job records from db
-  end
+  # def self.job_list
+  #   all
+  #   # retrieve all job records from db
+  # end
 
-  def add_to_list
-    save
-    # save the job record to db
-  end
+  # def add_to_list
+  #   save
+  #   # save the job record to db
+  # end
 
-  def self.retrieve_list
-    all
-    # retrieve all job records from db
-  end
+  # def self.retrieve_list
+  #   all
+  #   # retrieve all job records from db
+  # end
 end

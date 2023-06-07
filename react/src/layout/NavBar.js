@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
 function NavBar() {
+
+  const {current_user, logout} = useContext(AuthContext)
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-success bg-opacity-50 p-4 ">
@@ -29,9 +33,17 @@ function NavBar() {
             PROFILE
           </Link>
           <ul className="dropdown-menu">
+            {current_user?
+            <>
+            <li><a className="dropdown-item" href="#">{current_user && current_user.username}</a></li>
             <li><Link to="/Profile" className="dropdown-item" href="#">Profile</Link></li>
+            <li><a className="dropdown-item" onClick={()=>logout()}>Logout</a></li>
+            
+            </>:
+            <>
             <li><Link to="/Signup" className="dropdown-item" href="#">SignUp</Link></li>
             <li><Link to="/Login" className="dropdown-item" href="#">Login</Link></li>
+            </>}
           </ul>
         </li>
       </ul>

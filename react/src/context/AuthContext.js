@@ -90,8 +90,9 @@ export function AuthProvider({children})
 
    const contextData = {
     login,
-    logout, 
-    current_user
+    current_user,
+    logout,
+    
     }
   return (
     <AuthContext.Provider value={contextData}>

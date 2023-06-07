@@ -1,6 +1,7 @@
-class CreateJobPosts < ActiveRecord::Migration[6.1]
+class CreateJobs < ActiveRecord::Migration[6.1]
   def change
-    create_table :job_posts do |t|
+    create_table :jobs do |t|
+      t.integer :user_id
       t.string :title
       t.string :company_name
       t.text :description
