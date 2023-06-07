@@ -4,8 +4,8 @@ import { FaFacebookF }  from 'react-icons/fa';
 
 function Footer() {
   return (
-    <div>
-      <div className="container">
+    <div className='bg-success bg-opacity-50'>
+      <div className="container mt-3 pt-5">
         <div className="row">
           <div className="col-6 col-md-2 mb-3">
             <h5>Section</h5>
