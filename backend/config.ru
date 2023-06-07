@@ -15,4 +15,4 @@ use Rack::JSONBodyParser
 run ApplicationController
 use UsersController
 use SessionController
-use JobPostController
+use JobController

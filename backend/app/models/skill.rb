@@ -1,5 +1,6 @@
 require 'active_record'
 
-class Skill
-    # belongs_to :user
+class Skill < ActiveRecord::Base
+    has_many :jobs
+    has_many :users
 end

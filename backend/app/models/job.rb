@@ -5,6 +5,8 @@ class Job < ActiveRecord::Base
   belongs_to :user
   has_many :job_posts
   has_many :users, through: :job_posts
+  has_and_belongs_to_many :lists
+  
 
 
   def delete

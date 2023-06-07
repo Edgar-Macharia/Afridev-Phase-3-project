@@ -2,15 +2,8 @@ class JobController < ApplicationController
 
     get "/myjobs" do
         jobs = Job.all
-        jobs.to_json(include: :job)
+        jobs.to_json
     end
-
-    # job "/jobjob" do
-    # username=params[:username]
-    # email=params[:email]
-    # country=params[:country]
-    # password=params[:password]
-    # end
  
  # =============ADD JOB
      post "/jobs/addjob" do
@@ -20,9 +13,9 @@ class JobController < ApplicationController
          company_name=params[:company_name]
          user_id=params[:user_id]
          location=params[:location]
-         description=param[:description]
+         description=params[:description]
         
-         if(title.present? &&  company_name.present? && user_id.present?)
+         if(title.present? &&  company_name.present? && description.present?)
  
              check_user = User.exists?(id: user_id)
              if check_user===false
@@ -32,7 +25,8 @@ class JobController < ApplicationController
                  message.to_json
              
              else
-                 job = job.create(title: title, company_name: company_name, user_id: user_id)
+                job = Job.create(title: title, company_name: company_name, location: location, description: description)
+
                  if job
                      message = {:success=> "job created successfully"}
                      message.to_json
@@ -45,7 +39,7 @@ class JobController < ApplicationController
              end
          else
              status 406
-             message = {:error=> "All field are required"}
+             message = {:error=> "All fields are required"}
              message.to_json
          end
      end
