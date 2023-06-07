@@ -90,6 +90,7 @@ function Profile() {
               <p>Username: {userData.username}</p>
               <p>Country: {userData.country}</p>
               <p>Skills: {userData.skills}</p>
+              <p>Date Joined : {userData.created_at}</p>
               {/* Display additional user information */}
               <button className="btn btn-primary" onClick={handleEditProfile}>
                 Edit Profile

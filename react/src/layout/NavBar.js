@@ -12,6 +12,9 @@ function NavBar() {
     </button>
     <div className="collapse navbar-collapse d-flex justify-content-end " id="navbarNavDropdown">
       <ul className="navbar-nav">
+      <li className="nav-item">
+          <Link to="/Jobs" className="nav-link active" aria-current="page">JOBS</Link>
+        </li>
         <li className="nav-item">
           <Link to="/About" className="nav-link active" aria-current="page">ABOUT</Link>
         </li>

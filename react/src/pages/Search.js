@@ -4,15 +4,14 @@ function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = () => {
-    
-    const results = [
-      "Result 1",
-      "Result 2",
-      "Result 3",
-    ];
-
-    setSearchResults(results);
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`http://your-api-url/search?term=${searchTerm}`);
+      const data = await response.json();
+      setSearchResults(data);
+    } catch (error) {
+      console.error("Error searching:", error);
+    }
   };
 
   return (

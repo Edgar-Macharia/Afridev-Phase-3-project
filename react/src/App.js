@@ -7,7 +7,9 @@ import SignUp from './pages/SignUp'
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
+import Jobs from './pages/Jobs';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
       <Routes>
         <Route path= '/' element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path= 'jobs' element={<Jobs />} />
           <Route path= 'about' element={<About />} />
           <Route path= 'search' element={<Search />} />
           <Route path= 'signup' element={<SignUp />} />

@@ -11,10 +11,6 @@ function About() {
             <br />
             Search and instantly get matched with candidates that meet your
             specifications and budget.
-            <br />
-            Schedule an interview with the talent and hire them.
-            <br />
-            Sign a contract that details the project scope and get started.
           </div>
           <div class="col-6 col-md-4 mt-5">
             <img
@@ -36,10 +32,9 @@ function About() {
             />
           </div>
           <div class="col-md-8 d-flex align-items-center">
-            Our talents are remote-ready, fluent in collaborative tools, and
-            available for your entire project. Our multilingual and
-            multinational professional staff will also be available at any time
-            to support you.
+          Schedule an interview with the talent and hire them.
+            <br />
+            Sign a contract that details the project scope and get started.
           </div>
         </div>
       </div>
