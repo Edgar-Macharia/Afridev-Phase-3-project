@@ -6,7 +6,9 @@ import Search from './pages/Search';
 import SignUp from './pages/SignUp'
 import Login from './pages/Login';
 import Contact from './pages/Contact';
+import Profile from './pages/Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path= 'signup' element={<SignUp />} />
           <Route path= 'login' element={<Login />} />
           <Route path= 'contact' element={<Contact />} />
+          <Route path= 'profile' element={<Profile />} />
         </Route>
       </Routes>
       </BrowserRouter>

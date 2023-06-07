@@ -44,7 +44,6 @@ function Home() {
                 <div className="col">
                   <div className="card h-100 border-success">
                     <div className="card-body">
-                      <h5 className="card-title"></h5>
                       <p className="card-text">
                         Allow us to assist you by identifying qualified talents
                         on your behalf

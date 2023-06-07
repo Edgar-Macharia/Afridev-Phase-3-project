@@ -26,6 +26,7 @@ function NavBar() {
             PROFILE
           </Link>
           <ul className="dropdown-menu">
+            <li><Link to="/Profile" className="dropdown-item" href="#">Profile</Link></li>
             <li><Link to="/Signup" className="dropdown-item" href="#">SignUp</Link></li>
             <li><Link to="/Login" className="dropdown-item" href="#">Login</Link></li>
           </ul>
