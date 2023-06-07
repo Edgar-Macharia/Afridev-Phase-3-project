@@ -6,6 +6,7 @@ import Search from './pages/Search';
 import SignUp from './pages/SignUp'
 import Login from './pages/Login';
 import Contact from './pages/Contact';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
