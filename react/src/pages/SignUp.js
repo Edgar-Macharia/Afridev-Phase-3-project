@@ -1,23 +1,42 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Profile from './Profile'
 
 function SignUp() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [skills, setSkills] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform signup logic 
+    // Perform signup
+    setIsLoading(true);
 
-    // Reset form fields
-    setUsername("");
-    setEmail("");
-    setCountry("");
-    setSkills("");
-    setPassword("");
+    // sign-up success
+    setTimeout(() => {
+      // Reset form
+      setUsername("");
+      setEmail("");
+      setCountry("");
+      setSkills("");
+      setPassword("");
+      setIsLoading(false);
+
+      // Fetch user details and navigate to user profile
+      fetch("/current_user")
+        .then((res) => res.json())
+        .then((user) => {
+          navigate(<Profile />);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 2000);
   };
 
   return (
@@ -90,11 +109,8 @@ function SignUp() {
                   <input type="checkbox" value="remember-me" /> Remember me
                 </label>
               </div>
-              <button
-                className="w-100 btn btn-lg btn-success"
-                type="submit"
-              >
-                Sign Up
+              <button className="w-100 btn btn-lg btn-success" type="submit" disabled={isLoading}>
+                {isLoading ? "Signing up..." : "Sign Up"}
               </button>
               <p className="mt-5 mb-3 text-muted">&copy; 2023</p>
             </form>

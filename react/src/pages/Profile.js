@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+// import React, { useState, useEffect, useContext } from "react";
+// import { AuthContext } from "../context/AuthContext";
 
-function Profile() {
+// function Profile() {
 
-  const {current_user, login} = useContext(AuthContext)
+//   const {current_user, login} = useContext(AuthContext)
 
   // const [loggedIn, setLoggedIn] = useState(false);
   // const [userData, setUserData] = useState(null);
@@ -113,6 +113,6 @@ function Profile() {
   //     )}
   //   </div>
   // );
-}
+// }
 
-export default Profile;
+// export default Profile;
