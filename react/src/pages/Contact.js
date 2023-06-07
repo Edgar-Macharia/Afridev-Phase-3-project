@@ -1,38 +1,36 @@
-import {useState} from 'react'
+import React, { useState } from 'react';
 
 function Contact() {
- 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [comment, setComment] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [comment, setComment] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Perform form submission logic here
-    // Replace the below code with your actual form submission implementation
+    
 
-    // Sending a POST request to an API
-    fetch("https://example.com/contact", {
-      method: "POST",
+    fetch('https://example.com/contact', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, email, comment }),
     })
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server
-        setSuccessMessage("Thank you for your comment!");
+        setSuccessMessage('Thank you for your comment!');
         // Reset the form
-        setName("");
-        setEmail("");
-        setComment("");
+        setName('');
+        setEmail('');
+        setComment('');
       })
       .catch((error) => {
         // Handle any errors that occurred during form submission
-        console.error("Error:", error);
+        console.error('Error:', error);
       });
   };
 
@@ -92,5 +90,4 @@ function Contact() {
   );
 }
 
-
-export default Contact
+export default Contact;

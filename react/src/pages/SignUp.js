@@ -10,7 +10,7 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform signup logic here, e.g., sending a request to the server to save the user's information
+    // Perform signup logic 
 
     // Reset form fields
     setUsername("");
