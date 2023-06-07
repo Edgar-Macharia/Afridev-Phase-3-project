@@ -35,6 +35,7 @@ function Contact() {
   };
 
   return (
+    <div>
     <div className="container mt-3">
       <h1>Contact Us</h1>
       {successMessage && (
@@ -86,6 +87,7 @@ function Contact() {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 }

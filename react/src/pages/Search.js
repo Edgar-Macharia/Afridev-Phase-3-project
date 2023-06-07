@@ -24,7 +24,7 @@ function Search() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search"
+                placeholder="Search for Talent or jobs"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />

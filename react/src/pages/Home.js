@@ -1,6 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import About from "./About";
+import Search from "./Search";
 
 function Home() {
   return (
@@ -65,6 +66,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Search />
       <About />
     </>
   );
