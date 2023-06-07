@@ -17,7 +17,7 @@ function Jobs() {
   const fetchJobs = async () => {
     try {
       // Make a GET request to fetch jobs from the server
-      const response = await fetch('http://your-api-url/jobs');
+      const response = await fetch('/jobs');
       const data = await response.json();
       setJobs(data);
     } catch (error) {
@@ -34,7 +34,7 @@ function Jobs() {
 
     try {
       // Make a POST request to submit a new job
-      const response = await fetch('http://your-api-url/jobs', {
+      const response = await fetch('/jobs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ function Jobs() {
   const handleDeleteJob = async (id) => {
     try {
       // Make a DELETE request to remove a job
-      await fetch(`http://your-api-url/jobs/${id}`, {
+      await fetch(`/jobs/${id}`, {
         method: 'DELETE',
       });
       setJobs(jobs.filter((job) => job.id !== id));
