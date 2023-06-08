@@ -10,11 +10,11 @@ export function JobProvider({ children }) {
   const [jobs, setJobs] = useState([]);
 
   // AddJob
-  const AddJob = (title, description, userid) => {
+  const addJob = (title, company_name, location, description, user_id) => {
     fetch('/jobs/addjob', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: title, description: description, user_id: userid }),
+      body: JSON.stringify({ title: title, company_name: company_name, location: location, description: description, user_id: user_id }),
     })
       .then((res) => res.json())
       .then((response) => {
@@ -65,7 +65,7 @@ export function JobProvider({ children }) {
   const contextData = {
     jobs,
     deleteJob,
-    AddJob,
+    addJob,
     fetchJobs,
   };
 

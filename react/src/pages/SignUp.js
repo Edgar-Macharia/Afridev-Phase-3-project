@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function SignUp() {
+
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
@@ -10,38 +14,37 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform signup logic
     setIsLoading(true);
 
-    // Simulating sign-up success
-    setTimeout(() => {
-      // Reset form fields
-      setUsername("");
-      setEmail("");
-      setCountry("");
-      setSkills("");
-      setPassword("");
-      setIsLoading(false);
+    
+      // Simulating sign-up success
+      signUp(username, email, country, skills, password);
 
-      // Fetch user details and navigate to user profile
-      fetch("/current_user")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.user) {
-            // User found, navigate to user profile
-            navigate(`/profile/${data.user.id}`);
-          } else {
-            // User not found, handle the error
-            console.log("User not found");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, 2000);
+      // Perform login
+      login(username, password);
+
+      // Navigate to home page
+      navigate("/");
+      setIsLoading(false);
+  };
+
+  const signUp = async (username, email, country, skills, password) => {
+    // Simulating signup logic
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // Reset form fields
+        setUsername("");
+        setEmail("");
+        setCountry("");
+        setSkills("");
+        setPassword("");
+        resolve();
+      }, 2000);
+    });
   };
 
   return (
@@ -114,7 +117,11 @@ function SignUp() {
                   <input type="checkbox" value="remember-me" /> Remember me
                 </label>
               </div>
-              <button className="w-100 btn btn-lg btn-success" type="submit" disabled={isLoading}>
+              <button
+                className="w-100 btn btn-lg btn-success"
+                type="submit"
+                disabled={isLoading}
+              >
                 {isLoading ? "Signing up..." : "Sign Up"}
               </button>
               <p className="mt-5 mb-3 text-muted">&copy; 2023</p>
