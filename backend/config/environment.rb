@@ -8,3 +8,11 @@ Bundler.require(:default, ENV['RACK_ENV'])
 
 # Require in all files in 'app' directory
 require_all 'app'
+
+# Database configrurations
+configure do
+    set :database, {
+      adapter: 'sqlite3',
+      database: 'db/development.sqlite3'
+    }
+  end
