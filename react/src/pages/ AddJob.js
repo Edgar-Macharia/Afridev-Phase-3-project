@@ -20,7 +20,7 @@ export default function AddJob()
     <div className="container" style={{"minHeight":"50vh"}}>
         {current_user && current_user?
         <>
-        <h3>Add Blog</h3>
+        <h3>Add Job</h3>
         <div className="row h-full">
             <div className="col-md-6">
             </div>

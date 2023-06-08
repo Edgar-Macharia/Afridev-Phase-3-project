@@ -35,8 +35,8 @@ function NavBar() {
           <ul className="dropdown-menu">
             {current_user?
             <>
-            <li><a className="dropdown-item" href="#">{current_user && current_user.username}</a></li>
-            <li><Link to="/Profile" className="dropdown-item" href="#">Profile</Link></li>
+
+            <li><Link to="/Profile" className="dropdown-item" href="#">{current_user && current_user.username}</Link></li>
             <li><a className="dropdown-item" onClick={()=>logout()}>Logout</a></li>
             
             </>:

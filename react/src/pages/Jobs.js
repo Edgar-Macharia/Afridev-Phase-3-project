@@ -1,13 +1,16 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { JobContext } from '../context/JobContext';
 
 export default function Jobs() {
-  const { jobs, fetchJobs } = useContext(JobContext);
+  const { jobs, fetchJobs, deleteJob } = useContext(JobContext);
 
   useEffect(() => {
     fetchJobs();
   }, [fetchJobs]);
+
+  const handleDelete = (id) => {
+    deleteJob(id);
+  };
 
   return (
     <>
@@ -22,9 +25,12 @@ export default function Jobs() {
                 <h5>{job.title}</h5>
                 <p>{job.description}</p>
               </div>
-              <Link to={`/jobs/${job.id}`} className="btn btn-success">
-                Read More
-              </Link>
+              <div>
+                <button className="btn btn-success btn-sm me-2">Edit</button>
+                <button className="btn btn-danger btn-sm " onClick={() => handleDelete(job.id)}>
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

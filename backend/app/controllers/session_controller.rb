@@ -35,4 +35,24 @@ class SessionController < ApplicationController
        message = {:success=> "Logout success"}
        message.to_json()
     end 
+
+    # CURRENT USER
+    get "/current_user" do
+
+       puts "logged in"
+       puts user_id = session[:user_id]
+      
+        if user_id
+          # Fetch the user from the database using the user_id
+          user = User.find_by(id: user_id)
+      
+          if user
+            { currentUser: user }.to_json
+          else
+            { error: "User not found" }.to_json
+          end
+        else
+          { error: "Not logged in" }.to_json
+        end
+    end
 end

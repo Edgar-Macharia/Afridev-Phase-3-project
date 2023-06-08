@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Profile from './Profile'
 
 function SignUp() {
   const navigate = useNavigate();
@@ -14,12 +13,12 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform signup
+    // Perform signup logic
     setIsLoading(true);
 
-    // sign-up success
+    // Simulating sign-up success
     setTimeout(() => {
-      // Reset form
+      // Reset form fields
       setUsername("");
       setEmail("");
       setCountry("");
@@ -30,8 +29,14 @@ function SignUp() {
       // Fetch user details and navigate to user profile
       fetch("/current_user")
         .then((res) => res.json())
-        .then((user) => {
-          navigate(<Profile />);
+        .then((data) => {
+          if (data.user) {
+            // User found, navigate to user profile
+            navigate(`/profile/${data.user.id}`);
+          } else {
+            // User not found, handle the error
+            console.log("User not found");
+          }
         })
         .catch((error) => {
           console.log(error);
