@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { JobContext } from "../context/JobContext";
 import { useNavigate } from "react-router-dom";
 import AddJob from "./ AddJob"
 
 export default function Profile() {
-  const { current_user, login } = useContext(AuthContext);
+  const { current_user, login, deleteUser, update } = useContext(AuthContext);
+  const { addJob } = useContext(JobContext);
   const navigate = useNavigate();
 
   const [loggedIn, setLoggedIn] = useState(false);
@@ -37,10 +39,12 @@ export default function Profile() {
   };
 
   const handleEditProfile = () => {
+    update()
     console.log("Edit profile clicked");
   };
 
   const handleDeleteProfile = () => {
+    deleteUser()
     console.log("Delete profile clicked");
   };
 
@@ -54,8 +58,10 @@ export default function Profile() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Job posted successfully");
+        
+        console.log("Job post clicked");
         navigate(<AddJob />); // Navigate to the addJob component
+        addJob()
       })
       .catch((error) => {
         console.error("Error:", error);

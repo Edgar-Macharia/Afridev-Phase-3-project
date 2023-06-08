@@ -3,14 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function SignUp() {
-
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
-  const [skills, setSkills] = useState("");
+  // const [skills, setSkills] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,19 +19,18 @@ function SignUp() {
     // Perform signup logic
     setIsLoading(true);
 
-    
-      // Simulating sign-up success
-      signUp(username, email, country, skills, password);
+    // Simulating sign-up success
+    signup(username, email, country, password);
 
-      // Perform login
-      login(username, password);
+    // // Perform login
+    // login(username, password);
 
-      // Navigate to home page
-      navigate("/");
-      setIsLoading(false);
+    // Navigate to home page
+    navigate("/");
+    setIsLoading(false);
   };
 
-  const signUp = async (username, email, country, skills, password) => {
+  const signUp = async (username, email, skills, country, password) => {
     // Simulating signup logic
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -40,7 +38,7 @@ function SignUp() {
         setUsername("");
         setEmail("");
         setCountry("");
-        setSkills("");
+        // setSkills("");
         setPassword("");
         resolve();
       }, 2000);
@@ -89,17 +87,19 @@ function SignUp() {
                 />
                 <label htmlFor="country">Country</label>
               </div>
-              <div className="form-floating mb-1">
+
+              {/* <div className="form-floating mb-1">
                 <input
                   type="text"
                   className="form-control"
                   id="skills"
-                  placeholder="Skills"
+                  placeholder="Country"
                   value={skills}
                   onChange={(e) => setSkills(e.target.value)}
                 />
                 <label htmlFor="skills">Skills</label>
-              </div>
+              </div> */}
+
               <div className="form-floating mb-1">
                 <input
                   type="password"

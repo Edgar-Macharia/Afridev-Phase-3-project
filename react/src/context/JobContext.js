@@ -46,6 +46,32 @@ export function JobProvider({ children }) {
       });
   };
 
+  //Edit job
+
+  const editJob = (title, company_name, location, description, user_id) => {
+
+    fetch(`/jobs/editjob/:id`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title: title, company_name: company_name, location: location, description: description, user_id: user_id }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        console.log(response);
+        if (response.error) {
+          Swal.fire("Error", response.error, "error");
+        } else if (response.success) {
+          nav("/");
+          Swal.fire("Success", response.success, "success");
+          setonchange(!onchange);
+        } else {
+          Swal.fire("Error", "Something went wrong", "error");
+        }
+      });
+  };
+
   // Fetch jobs
   const fetchJobs = () => {
     fetch('/myjobs', {
@@ -66,6 +92,7 @@ export function JobProvider({ children }) {
     jobs,
     deleteJob,
     addJob,
+    editJob,
     fetchJobs,
   };
 
