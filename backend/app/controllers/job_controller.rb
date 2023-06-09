@@ -71,21 +71,18 @@ patch "/jobs/editjob/:id" do
 end
 
 # DELETE JOB
-  delete "/jobs/delete/:id" do
-    authorize
+delete "/jobs/delete/:id" do
+  authorize
 
-    if Job.exists?(id: params[:id])
-      job = Job.find(params[:id])
-      if job.destroy
-        { success: "Job deleted successfully" }.to_json
-      else
-        status 500
-        { error: "Error deleting the job" }.to_json
-      end
-    else
-      status 404
-      { error: "Job not found" }.to_json
-    end
+  if Job.exists?(id: params[:id])
+    job = Job.find(params[:id])
+    job.destroy
+    message = { success: "Job deleted successfully" }
+    message.to_json
+  else
+    status 406
+    message = { error: "The Job does not exist" }
+    message.to_json
   end
 end
 
@@ -96,38 +93,11 @@ get "/jobs/search" do
   query = "
     SELECT * FROM jobs
     WHERE title LIKE '%#{searchTerm}%'
-      OR company_name LIKE '%#{searchTerm}%'
-      OR location LIKE '%#{searchTerm}%'
   "
+
   matchingJobs = ActiveRecord::Base.connection.execute(query)
   matchingJobs.to_json
-  
 end
 
-
-
-  # # UPDATE ARCHIVE JOB
-  # patch "/jobs/archive/:id" do
-  #   authorize
-
-  #   archive = params[:archive]
-
-  #   if archive.present?
-  #     job = Job.find_by(id: params[:id])
-  #     if job
-  #       job.update(archive: archive)
-  #       message = { success: "Job archived" }
-  #       message.to_json
-  #     else
-  #       status 406
-  #       message = { error: "Error archiving the job" }
-  #       message.to_json
-  #     end
-  #   else
-  #     status 406
-  #     message = { error: "All fields are required" }
-  #     message.to_json
-  #   end
-  # end
-
+end
   

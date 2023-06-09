@@ -6,7 +6,7 @@ export const JobContext = createContext();
 
 export function JobProvider({ children }) {
   const nav = useNavigate();
-  const [onchange, setonchange] = useState(false);
+  const [onChange, setOnChange] = useState(false);
   const [jobs, setJobs] = useState([]);
 
   // AddJob
@@ -24,7 +24,7 @@ export function JobProvider({ children }) {
         } else if (response.success) {
           nav('/jobs');
           Swal.fire('Success', response.success, 'success');
-          setonchange(!onchange);
+          setOnChange(!onChange);
         } else {
           Swal.fire('Error', 'Something went wrong', 'error');
         }
@@ -38,7 +38,7 @@ export function JobProvider({ children }) {
     })
       .then((res) => res.json())
       .then((response) => {
-        setonchange(!onchange);
+        setOnChange(!onChange);
         console.log(response);
         nav('/');
         Swal.fire('Success', 'Delete success', 'success');
@@ -65,7 +65,7 @@ export function JobProvider({ children }) {
         } else if (response.success) {
           nav("/AddJob");
           Swal.fire("Success", response.success, "success");
-          setonchange(!onchange);
+          setOnChange(!onChange);
         } else {
           Swal.fire("Error", "Something went wrong", "error");
         }
@@ -86,7 +86,7 @@ export function JobProvider({ children }) {
 
   useEffect(() => {
     searchJob();
-  }, [onchange]);
+  }, [onChange]);
 
 
   // Fetch jobs
@@ -103,7 +103,7 @@ export function JobProvider({ children }) {
 
   useEffect(() => {
     fetchJobs();
-  }, [onchange]);
+  }, [onChange]);
 
   const contextData = {
     jobs,

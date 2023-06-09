@@ -20,11 +20,13 @@ const ApplyJob = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Perform submission logic here, such as sending the files to the server
 
-    // Reset the form
     setResumeFile(null);
     setLetterFile(null);
+
+    // //Reset input values
+    document.getElementById('resume').value = '';
+    document.getElementById('letter').value = '';
   };
 
   const handleGoBack = () => {

@@ -1,19 +1,35 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { JobContext } from "../context/JobContext";
 
 function Search() {
-  const { searchJob } = useContext(JobContext);
+  const { searchJob, fetchJobs } = useContext(JobContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = () => {
-    searchJob();
+  useEffect(() => {
+    fetchJobs();
+  }, [fetchJobs]);
 
-      const response = fetch(`http://127.0.0.1:9292/jobs/search?term=${searchTerm}`);
-      const data = response.json();
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`http://127.0.0.1:9292/jobs/search?${searchTerm}`);
+      const data = await response.json();
       setSearchResults(data);
+    } catch (error) {
+      console.error("Error searching:", error);
+    }
+  };
 
-    };
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+  };
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setSearchResults([]);
+    }
+  }, [searchTerm]);
 
   return (
     <div className="container my-3">
@@ -25,7 +41,7 @@ function Search() {
               className="form-control"
               placeholder="Search for Talent or Jobs"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={handleInputChange}
             />
             <button
               className="btn btn-success"
@@ -43,7 +59,7 @@ function Search() {
             <ul className="list-group">
               {searchResults.map((result, index) => (
                 <li className="list-group-item" key={index}>
-                  {result}
+                  {result.title} - {result.company_name}
                 </li>
               ))}
             </ul>
