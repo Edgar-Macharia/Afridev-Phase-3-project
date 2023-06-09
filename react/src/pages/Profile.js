@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { JobContext } from "../context/JobContext";
 // import { useNavigate } from "react-router-dom";
-import AddJob from "./ AddJob"
 
 export default function Profile() {
   const { current_user, login, deleteUser, update } = useContext(AuthContext);
@@ -71,7 +70,7 @@ export default function Profile() {
                   </div>
                   <p className="text-center mt-4">Username: {current_user.username}</p>
                   <p className="text-center">Country: {current_user.country}</p>
-                  {/* <p className="text-center">Skills: {current_user.skills}</p> */}
+                  <p className="text-center">Email: {current_user.email}</p>
                   <p className="text-center">Date Joined: {current_user.created_at}</p>
                   <div className="d-grid gap-2">
                     <button className="btn btn-primary" onClick={handleEditProfile}>

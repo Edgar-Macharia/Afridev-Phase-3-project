@@ -83,13 +83,13 @@ export function AuthProvider({ children }) {
   }, [onChange]);
 
  // Delete current user profile
-const deleteUser = () => {
+const deleteUser = (id) => {
     fetch("/users/delete/:id", {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((response) => {
+        setOnChange(!onChange)
         if (response.success) {
           Swal.fire("Success", "User deleted successfully", "success");
           nav("/signup");
@@ -101,7 +101,7 @@ const deleteUser = () => {
       });
   };
 //update profile
-  const update = (username, email, country, password) => {
+  const update = (username, email, country) => {
     
     fetch(`/users/edituser/:id`, {
       method: "PATCH",
@@ -109,7 +109,7 @@ const deleteUser = () => {
         "Content-Type": "application/json",
         
       },
-      body: JSON.stringify({ username, email, country, password }),
+      body: JSON.stringify({ username, email, country }),
     })
       .then((res) => res.json())
       .then((response) => {

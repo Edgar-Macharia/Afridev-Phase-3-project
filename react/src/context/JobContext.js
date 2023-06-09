@@ -22,7 +22,7 @@ export function JobProvider({ children }) {
         if (response.error) {
           Swal.fire('Error', response.error, 'error');
         } else if (response.success) {
-          nav('/');
+          nav('/jobs');
           Swal.fire('Success', response.success, 'success');
           setonchange(!onchange);
         } else {

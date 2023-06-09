@@ -43,35 +43,37 @@ class UsersController < ApplicationController
     
   
     # UPDATE USER
-    patch "/users/edituser/:id" do
-      authorize
+patch "/users/edituser/:id" do
+  authorize
   
-      username = params[:username]
-      email = params[:email]
-      country = params[:country]
-      password = params[:password]
-      user_id = params[:user_id]
+  username = params[:username]
+  email = params[:email]
+  country = params[:country]
+  password = params[:password]
+  user_id = params[:user_id]
   
-      if username.present? && user_id.present?
-        user = User.find_by(id: params[:id])
-        if user
-          user.update(username: username, email: email, country: country)
-          message = { success: "User updated successfully" }
-          message.to_json
-        else
-          status 406
-          message = { error: "Error updating the user" }
-          message.to_json
-        end
-      else
-        status 406
-        message = { error: "All fields are required" }
-        message.to_json
-      end
+  if username.present? && user_id.present?
+    user = User.find_by(user_id: params[:user_id])
+    if user
+      user.update(username: username, email: email, country: country)
+      message = { success: "User updated successfully" }
+      status 200
+      message.to_json
+    else
+      status 404
+      message = { error: "Error updating the user" }
+      message.to_json
     end
+  else
+    status 400
+    message = { error: "All fields are required" }
+    message.to_json
+  end
+end
+
   
     # DELETE USER
-    delete "/users/delete/:id" do
+  delete "/users/delete/:id" do
       authorize
   
       if User.exists?(id: params[:id])
