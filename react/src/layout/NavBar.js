@@ -58,7 +58,7 @@ function NavBar() {
                         className="nav-link active"
                         aria-current="page"
                       >
-                        JOBS
+                        Jobs
                       </Link>
                     </>
                   )}

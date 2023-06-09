@@ -12,6 +12,7 @@ import AddJob from './pages/ AddJob';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './context/AuthContext';
 import { JobProvider } from './context/JobContext';
+import ApplyJob from './pages/ApplyJob';
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path= 'login' element={<Login />} />
           <Route path= 'contact' element={<Contact />} />
           <Route path= 'profile' element={<Profile />} />
+          <Route path='applyjob' element={<ApplyJob />} />
         </Route>
       </Routes>
       </JobProvider>
