@@ -2,7 +2,7 @@
   "name": "afridev",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:9292",
+  "proxy": "https://afridev-z2wq.onrender.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
