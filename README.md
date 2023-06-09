@@ -3,6 +3,21 @@
 This is a job website where users can sign up, log in, view their profile, browse available jobs, and post jobs.
 
 
+<img width="1439" alt="Screenshot 2023-06-09 at 19 17 40" src="https://github.com/EdMash00/Phase-3-project/assets/126578269/ebe7f41b-d96a-408f-84e8-414d8d2f369e">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Features
 
