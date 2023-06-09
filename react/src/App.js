@@ -34,7 +34,7 @@ function App() {
           <Route path= 'login' element={<Login />} />
           <Route path= 'contact' element={<Contact />} />
           <Route path= 'profile' element={<Profile />} />
-          <Route path='applyjob' element={<ApplyJob />} />
+          <Route path='applyjob/:id' element={<ApplyJob />} />
         </Route>
       </Routes>
       </JobProvider>

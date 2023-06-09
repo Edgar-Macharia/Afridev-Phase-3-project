@@ -70,35 +70,10 @@ patch "/jobs/editjob/:id" do
   end
 end
 
-
-  # UPDATE ARCHIVE JOB
-  patch "/jobs/archive/:id" do
-    authorize
-
-    archive = params[:archive]
-
-    if archive.present?
-      job = Job.find_by(id: params[:id])
-      if job
-        job.update(archive: archive)
-        message = { success: "Job archived" }
-        message.to_json
-      else
-        status 406
-        message = { error: "Error archiving the job" }
-        message.to_json
-      end
-    else
-      status 406
-      message = { error: "All fields are required" }
-      message.to_json
-    end
-  end
-
-  # DELETE JOB
+# DELETE JOB
   delete "/jobs/delete/:id" do
     authorize
-  
+
     if Job.exists?(id: params[:id])
       job = Job.find(params[:id])
       if job.destroy
@@ -113,3 +88,30 @@ end
     end
   end
 end
+
+
+  # # UPDATE ARCHIVE JOB
+  # patch "/jobs/archive/:id" do
+  #   authorize
+
+  #   archive = params[:archive]
+
+  #   if archive.present?
+  #     job = Job.find_by(id: params[:id])
+  #     if job
+  #       job.update(archive: archive)
+  #       message = { success: "Job archived" }
+  #       message.to_json
+  #     else
+  #       status 406
+  #       message = { error: "Error archiving the job" }
+  #       message.to_json
+  #     end
+  #   else
+  #     status 406
+  #     message = { error: "All fields are required" }
+  #     message.to_json
+  #   end
+  # end
+
+  
