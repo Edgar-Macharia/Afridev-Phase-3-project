@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { JobContext } from "../context/JobContext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AddJob from "./ AddJob"
 
 export default function Profile() {
   const { current_user, login, deleteUser, update } = useContext(AuthContext);
   const { addJob } = useContext(JobContext);
-  const navigate = useNavigate();
+  // const nav = useNavigate();
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -48,26 +49,6 @@ export default function Profile() {
     console.log("Delete profile clicked");
   };
 
-  const handlePostJob = () => {
-    fetch("/jobs/addjob", {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        
-        console.log("Job post clicked");
-        navigate(<AddJob />); // Navigate to the addJob component
-        addJob()
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
   return (
     <div className="container">
       {current_user ? (
@@ -90,7 +71,7 @@ export default function Profile() {
                   </div>
                   <p className="text-center mt-4">Username: {current_user.username}</p>
                   <p className="text-center">Country: {current_user.country}</p>
-                  <p className="text-center">Skills: {current_user.skills}</p>
+                  {/* <p className="text-center">Skills: {current_user.skills}</p> */}
                   <p className="text-center">Date Joined: {current_user.created_at}</p>
                   <div className="d-grid gap-2">
                     <button className="btn btn-primary" onClick={handleEditProfile}>
@@ -99,9 +80,10 @@ export default function Profile() {
                     <button className="btn btn-danger" onClick={handleDeleteProfile}>
                       Delete Profile
                     </button>
-                    <button className="btn btn-success" onClick={handlePostJob}>
+                    <Link
+                  to={`/addjob`} className="btn btn-success">
                       Post Job
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

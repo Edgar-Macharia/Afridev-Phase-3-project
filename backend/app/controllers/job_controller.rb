@@ -89,6 +89,22 @@ end
   end
 end
 
+# Search jobs
+get "/jobs/search" do
+  searchTerm = params[:term]
+
+  query = "
+    SELECT * FROM jobs
+    WHERE title LIKE '%#{searchTerm}%'
+      OR company_name LIKE '%#{searchTerm}%'
+      OR location LIKE '%#{searchTerm}%'
+  "
+  matchingJobs = ActiveRecord::Base.connection.execute(query)
+  matchingJobs.to_json
+  
+end
+
+
 
   # # UPDATE ARCHIVE JOB
   # patch "/jobs/archive/:id" do

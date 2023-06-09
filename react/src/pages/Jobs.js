@@ -39,7 +39,7 @@ export default function Jobs() {
                 <p>Location: {job.location}</p>
                 <p>{job.description}</p>
                 <Link
-                  to={`/applyjob/${job.id}`} // Update the route to include the job ID
+                  to={`/applyjob/${job.id}`}
                   className="btn btn-success btn-sm mt-2"
                 >
                   Apply Job

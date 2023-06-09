@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { JobContext } from "../context/JobContext";
 
 function Search() {
+  const { searchJob } = useContext(JobContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = async () => {
-    try {
-      const response = await fetch(`http://127.0.0.1:9292/myjobs?term=${searchTerm}`);
-      const data = await response.json();
+  const handleSearch = () => {
+    searchJob();
+
+      const response = fetch(`http://127.0.0.1:9292/jobs/search?term=${searchTerm}`);
+      const data = response.json();
       setSearchResults(data);
-    } catch (error) {
-      console.error("Error searching:", error);
-    }
-  };
+
+    };
 
   return (
     <div className="container my-3">

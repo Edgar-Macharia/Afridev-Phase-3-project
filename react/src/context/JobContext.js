@@ -72,6 +72,23 @@ export function JobProvider({ children }) {
       });
   };
 
+  //Search jobs
+  const searchJob = () => {
+    fetch('/jobs/search', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        setJobs(response);
+      });
+  };
+
+  useEffect(() => {
+    searchJob();
+  }, [onchange]);
+
+
   // Fetch jobs
   const fetchJobs = () => {
     fetch('/myjobs', {
@@ -93,6 +110,7 @@ export function JobProvider({ children }) {
     deleteJob,
     addJob,
     editJob,
+    searchJob,
     fetchJobs,
   };
 

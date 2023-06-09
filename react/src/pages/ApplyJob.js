@@ -22,7 +22,7 @@ const ApplyJob = () => {
 
     // Perform submission logic here, such as sending the files to the server
 
-    // Reset the form after submission
+    // Reset the form
     setResumeFile(null);
     setLetterFile(null);
   };
